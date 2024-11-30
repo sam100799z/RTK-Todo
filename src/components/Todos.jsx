@@ -16,8 +16,8 @@ const Todos = () => {
 
 
     return (
-        <div className="text-white w-[50%]">
-            <div className="text-white w-[100%] flex justify-center text-2xl">Todos</div>
+        <div className="text-white w-full sm:w-[90%] md:w-[80%] lg:w-[50%]">
+            <div className="text-white w-full flex justify-center text-2xl">Todos</div>
             <ul className="list-none">
                 {todosArray.map((todo) => (
                     <li
@@ -30,8 +30,10 @@ const Todos = () => {
                                 dispatch(toggleEdit(todo.id))
                                 setInput(todo.task)
                             }}
-                        >Edit</button>
-                        {todo.editing === true ?
+                        >
+                            Edit
+                        </button>
+                        {todo.editing === true ? (
                             <input
                                 type="text"
                                 value={input}
@@ -40,21 +42,21 @@ const Todos = () => {
                                 }}
                                 className="text-white bg-zinc-800 border-0 py-1 px-4 focus:outline-none hover:bg-zinc-700 rounded text-md"
                             />
-                            :
+                        ) : (
                             <div className='text-white uppercase text-lg font-bold tracking-widest'>{todo.task}</div>
-                        }
+                        )}
 
-                        {todo.editing ?
+                        {todo.editing ? (
                             <button
                                 onClick={() => {
-
                                     dispatch(updateTodo({ id: todo.id, task: input }))
-
                                     dispatch(toggleEdit(todo.id));
                                 }}
                                 className="text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text-md"
-                            >Save</button>
-                            :
+                            >
+                                Save
+                            </button>
+                        ) : (
                             <button
                                 onClick={() => dispatch(removeTodo(todo.id))}
                                 className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"
@@ -74,13 +76,12 @@ const Todos = () => {
                                     />
                                 </svg>
                             </button>
-                        }
-
-
+                        )}
                     </li>
                 ))}
             </ul>
         </div>
+
     )
 }
 

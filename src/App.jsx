@@ -4,10 +4,11 @@ import Todos from './components/Todos'
 function App() {
 
   return (
-    <div className='flex flex-col items-center justify-center pt-5'>
+    <div className="flex flex-col items-center justify-center pt-5">
       <Add />
       <Todos />
     </div>
+
   )
 }
 
